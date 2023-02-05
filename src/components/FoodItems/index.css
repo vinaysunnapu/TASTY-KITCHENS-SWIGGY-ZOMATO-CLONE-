@@ -1,0 +1,63 @@
+.rest-banner-container {
+  background-color: #333333;
+  height: 188px;
+  display: flex;
+  color: #ffffff;
+}
+.rest-details-container {
+  display: flex;
+  flex-direction: column;
+}
+.rest-heading {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
+.rest-location {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+}
+.rating-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.rest-banner-image {
+  margin-right: 10px;
+}
+.food-items-container {
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: auto;
+}
+@media screen and (min-width: 992px) {
+  .rest-banner-container {
+    height: 344px;
+    align-items: center;
+  }
+  .rest-banner-image {
+    width: 445px;
+    height: 280px;
+    border-radius: 8px;
+    margin-left: 10%;
+    margin-right: 3%;
+  }
+  .rest-heading {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 48px;
+    color: #ffffff;
+  }
+}

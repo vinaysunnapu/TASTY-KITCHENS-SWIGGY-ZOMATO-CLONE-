@@ -1,0 +1,163 @@
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 1440px;
+  padding-bottom: 30px;
+  padding-left: 2rem;
+  padding-right: 1rem;
+}
+.header-logo-image {
+  width: 49px;
+  height: 39px;
+}
+.header-heading {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 24px;
+  color: #f7931e;
+}
+.header-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.header-items-container {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  gap: 20px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.logout-button {
+  width: 73px;
+  height: 32px;
+  color: #ffffff;
+  background: #f7931e;
+  border-radius: 8px;
+  border: none;
+}
+.header-home {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: #f7931e;
+}
+.header-cart {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: #334155;
+}
+.mobile-header-container {
+  display: none;
+}
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.page-button {
+  background-color: #ffffff;
+}
+.pagination-style {
+  font-family: 'Bree Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #334155;
+}
+.link-item {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 991px) {
+  .header-container {
+    display: none;
+  }
+  .mobile-header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  .mobile-header-logo-image {
+    width: 35px;
+    height: 28px;
+  }
+  .mobile-header-heading {
+    font-family: 'DM Sans';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 16px;
+    color: #f7931e;
+  }
+  .mobile-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .menu-button {
+    background-color: transparent;
+    border: none;
+  }
+  .popup-container {
+    background-color: grey;
+  }
+  .nav-list-bg-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+    background-color: #ffffff;
+  }
+  .mobile-nav-list-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style-type: none;
+  }
+  .mobile-nav-home {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #334155;
+  }
+  .mobile-nav-cart {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #f7931e;
+  }
+  .mobile-logout-button {
+    width: 73px;
+    height: 32px;
+    background: #f7931e;
+    border-radius: 8px;
+    color: #ffffff;
+    border: none;
+  }
+  .close-button {
+    background-color: transparent;
+    border: none;
+  }
+  .trigger-button {
+    border: none;
+  }
+}

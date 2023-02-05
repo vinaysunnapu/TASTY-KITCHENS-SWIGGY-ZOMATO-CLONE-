@@ -1,0 +1,31 @@
+.cart-list-item-container {
+  display: flex;
+  margin-bottom: 15px;
+}
+.cart-image {
+  width: 136px;
+  height: 90px;
+  margin-right: 15px;
+}
+.cart-list-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cart-heading {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  color: #183b56;
+}
+.cost-style {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffa412;
+}
