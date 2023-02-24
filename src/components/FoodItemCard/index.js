@@ -1,11 +1,24 @@
+import {useState} from 'react'
 import './index.css'
 import {AiFillStar} from 'react-icons/ai'
+// import Counter from '../Counter'
 
 const FoodItemCard = props => {
-  const {foodItemDetails, cartItems} = props
+  const [quantity, setQuantity] = useState(1)
+
+  const {foodItemDetails, addCartItem} = props
   const {cost, foodId, foodImageUrl, foodName, foodRating} = foodItemDetails
+
+  const onIncrementQuantity = () => {
+    setQuantity(prevState => prevState + 1)
+  }
+
+  const onDecrementQuantity = () => {
+    setQuantity(prevState => prevState - 1)
+  }
+
   const onClickAddToAddCart = () => {
-    cartItems(foodItemDetails)
+    addCartItem({...foodItemDetails, quantity})
   }
 
   return (
@@ -28,9 +41,13 @@ const FoodItemCard = props => {
             ADD
           </button>
           <div className="counter-container">
-            <button type="button">-</button>
-            <div>0</div>
-            <button type="button">+</button>
+            <button type="button" onClick={onDecrementQuantity}>
+              -
+            </button>
+            <div>{quantity}</div>
+            <button type="button" onClick={onIncrementQuantity}>
+              +
+            </button>
           </div>
         </div>
       </div>

@@ -40,6 +40,7 @@ class Home extends Component {
     restData: [],
     offersData: [],
     restApiStatus: restApiStatusConstants.initial,
+    sortByValue: sortByOptions[0].value,
   }
 
   componentDidMount() {
@@ -47,11 +48,20 @@ class Home extends Component {
     this.getRestaurantsData()
   }
 
+  onChangeSortByOptions = event => {
+    this.setState({sortByValue: event.target.value}, this.sortByRestaurantsData)
+  }
+
+  sortByRestaurantsData = () => {
+    this.getRestaurantsData()
+  }
+
   getRestaurantsData = async () => {
+    const {sortByValue} = this.state
     this.setState({restApiStatus: restApiStatusConstants.inProgress})
 
     const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = 'https://apis.ccbp.in/restaurants-list?offset=9&limit=9'
+    const apiUrl = `https://apis.ccbp.in/restaurants-list?offset=0&limit=9&sort-by-rating=${sortByValue}`
     const options = {
       method: 'GET',
       headers: {
@@ -134,7 +144,8 @@ class Home extends Component {
   }
 
   render() {
-    const {offersData} = this.state
+    const {offersData, sortByValue} = this.state
+    console.log(sortByValue)
     return (
       <>
         <Header />
@@ -160,7 +171,11 @@ class Home extends Component {
               <div className="sort-by-container">
                 <MdSort />
                 <p className="sort-by-para">Sort by</p>
-                <select>
+                <select
+                  name="sortBy"
+                  onChange={this.onChangeSortByOptions}
+                  value={sortByValue}
+                >
                   {sortByOptions.map(eachOption => (
                     <option
                       key={eachOption.id}

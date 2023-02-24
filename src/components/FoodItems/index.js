@@ -9,29 +9,59 @@ import FoodItemCard from '../FoodItemCard'
 
 class FoodItems extends Component {
   state = {
+    cartList: [],
     foodItems: [],
     restData: {},
-    cartData: JSON.parse(localStorage.getItem('cartData')),
   }
 
   componentDidMount() {
     this.getFoodItems()
+    this.getCartDataFromLocalStorage()
+    // localStorage.clear()
   }
 
-  cartItems = foodItemDetails => {
-    const {cartData} = this.state
-    this.setState(
-      prevState => ({
-        cartData: [...prevState.cartData, foodItemDetails],
-      }),
-      this.storingLocalStorage,
+  getCartDataFromLocalStorage = () => {
+    const cartData = localStorage.getItem('cartData')
+    if (cartData === null) {
+      return
+    }
+    try {
+      const parsedCartData = JSON.parse(cartData)
+      this.setState({cartList: parsedCartData})
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  addCartItem = product => {
+    // console.log(product)
+    const {cartList} = this.state
+    const productObject = cartList.find(
+      eachCartItem => eachCartItem.foodId === product.foodId,
     )
+    // console.log(productObject)
+    if (productObject) {
+      this.setState(
+        prevState => ({
+          cartList: prevState.cartList.map(eachCartItem => {
+            if (eachCartItem.foodId === product.foodId) {
+              const updatedQuantity = eachCartItem.quantity + product.quantity
+              return {...eachCartItem, quantity: updatedQuantity}
+            }
+            return eachCartItem
+          }),
+        }),
+        this.addToLocalStorage,
+      )
+    } else {
+      this.setState({cartList: [...cartList, product]}, this.addToLocalStorage)
+    }
   }
 
-  storingLocalStorage = () => {
-    const {cartData} = this.state
-    localStorage.setItem('cartData', JSON.stringify(cartData))
-    console.log(cartData)
+  addToLocalStorage = () => {
+    const {cartList} = this.state
+
+    localStorage.setItem('cartData', JSON.stringify(cartList))
   }
 
   getFoodItems = async () => {
@@ -49,7 +79,7 @@ class FoodItems extends Component {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
 
     const formattedRestData = {
       costForTwo: data.cost_for_two,
@@ -102,9 +132,10 @@ class FoodItems extends Component {
   }
 
   render() {
-    const {restData, foodItems, cartData} = this.state
+    const {restData, foodItems, cartList} = this.state
     // console.log(restData)
     // console.log(foodItems)
+    console.log(cartList)
 
     return (
       <>
@@ -115,7 +146,7 @@ class FoodItems extends Component {
             <FoodItemCard
               foodItemDetails={eachItem}
               key={eachItem.foodId}
-              cartItems={this.cartItems}
+              addCartItem={this.addCartItem}
             />
           ))}
         </ul>

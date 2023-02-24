@@ -1,21 +1,31 @@
 import {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import './index.css'
 import Popup from 'reactjs-popup'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {AiFillCloseCircle} from 'react-icons/ai'
 
 class Header extends Component {
+  onClickLogOut = () => {
+    const {history} = this.props
+    Cookies.remove('jwt_token')
+
+    history.replace('/login')
+  }
+
   render() {
     return (
       <nav className="nav-container">
         <div className="header-container">
           <div className="header-logo-container">
-            <img
-              src="https://res.cloudinary.com/dcauubpq9/image/upload/v1674875356/Group_7420_tjlrcp.png"
-              alt="website logo"
-              className="header-logo-image"
-            />
+            <Link to="/">
+              <img
+                src="https://res.cloudinary.com/dcauubpq9/image/upload/v1674875356/Group_7420_tjlrcp.png"
+                alt="website logo"
+                className="header-logo-image"
+              />
+            </Link>
             <h1 className="header-heading">Tasty Kitchens</h1>
           </div>
           <ul className="header-items-container">
@@ -26,7 +36,11 @@ class Header extends Component {
               <li className="header-cart">Cart</li>
             </Link>
             <li>
-              <button type="button" className="logout-button">
+              <button
+                type="button"
+                className="logout-button"
+                onClick={this.onClickLogOut}
+              >
                 Logout
               </button>
             </li>
@@ -34,11 +48,13 @@ class Header extends Component {
         </div>
         <div className="mobile-header-container">
           <div className="mobile-logo-container">
-            <img
-              src="https://res.cloudinary.com/dcauubpq9/image/upload/v1674875356/Group_7420_tjlrcp.png"
-              alt="website logo"
-              className="mobile-header-logo-image"
-            />
+            <Link to="/">
+              <img
+                src="https://res.cloudinary.com/dcauubpq9/image/upload/v1674875356/Group_7420_tjlrcp.png"
+                alt="website logo"
+                className="mobile-header-logo-image"
+              />
+            </Link>
             <h1 className="mobile-header-heading">Tasty Kitchens</h1>
           </div>
           <div className="popup-container">
@@ -82,4 +98,4 @@ class Header extends Component {
     )
   }
 }
-export default Header
+export default withRouter(Header)

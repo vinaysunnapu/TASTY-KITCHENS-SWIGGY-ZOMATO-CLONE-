@@ -1,6 +1,10 @@
 import './index.css'
-import {FaPinterestP, FaTwitter, FaFacebookSquare} from 'react-icons/fa'
-import {BsInstagram} from 'react-icons/bs'
+import {
+  FaPinterestSquare,
+  FaTwitter,
+  FaInstagram,
+  FaFacebookSquare,
+} from 'react-icons/fa'
 
 const Footer = () => (
   <div className="footer-container">
@@ -16,10 +20,10 @@ const Footer = () => (
       The only thing we are serious about is food. Contact us on
     </p>
     <div className="social-icons-container">
-      <FaPinterestP color="#ffffff" />
-      <BsInstagram color="#ffffff" />
-      <FaTwitter color="#ffffff" />
-      <FaFacebookSquare color="#ffffff" />
+      <FaPinterestSquare color="#ffffff" testid="pintrest-social-icon" />
+      <FaInstagram color="#ffffff" testid="instagram-social-icon" />
+      <FaTwitter color="#ffffff" testid="twitter-social-icon" />
+      <FaFacebookSquare color="#ffffff" testid="facebook-social-icon" />
     </div>
   </div>
 )

@@ -1,0 +1,33 @@
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.payment-success {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #1e293b;
+}
+.success-para {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #64748b;
+}
+.success-view-button {
+  background-color: #f7931e;
+  padding: 10px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+}
